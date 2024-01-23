@@ -35,9 +35,14 @@ void	PhoneBook::search(void)
 	}
 	std::cout << "put index : ";
 	std::cin >> cnt;
-	if (cnt < 0 || cnt > 7) {
+	if (std::cin.fail()) {
+		std::cout << "wrong index" << std::endl;
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	} else if (cnt < 0 || cnt > 7) {
 		std::cout << "wrong index" << std::endl;
 		return ;
+	} else {
+		contacts[cnt].printAllContact();
 	}
-	contacts[cnt].printAllContact();
 }
